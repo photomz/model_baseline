@@ -7,8 +7,10 @@ models:
     max_tokens: 4024
     pricing:
       date: "2025-02-23"
-      input: 2.50   # Standard input price; note: a cached input rate of 1.25 exists.
+      input: 2.50 # Standard input price; note: a cached input rate of 1.25 exists.
       output: 10.00
+    kwargs:
+      stream: true
 
   - name: "gpt4o_mini"
     model_name: "gpt-4o-mini"
@@ -17,35 +19,78 @@ models:
     temperature: 0.0
     pricing:
       date: "2025-02-23"
-      input: 0.15   # Standard input price; note: a cached input rate of 0.075 exists.
+      input: 0.15 # Standard input price; note: a cached input rate of 0.075 exists.
       output: 0.60
 
   - name: "o1_short_response"
     model_name: "o1"
     provider: "openai"
-    max_completion_tokens: 1024  # Shorter response limit
+    max_completion_tokens: 1024 # Shorter response limit
     pricing:
       date: "2025-02-23"
-      input: 15.00  # Standard input price; note: a cached input rate of 7.50 exists.
+      input: 15.00 # Standard input price; note: a cached input rate of 7.50 exists.
       output: 60.00
 
   - name: "o1_long_response"
     model_name: "o1"
     provider: "openai"
-    max_completion_tokens: 4024  # Longer response limit
+    max_completion_tokens: 4024 # Longer response limit
     pricing:
       date: "2025-02-23"
-      input: 15.00  # Standard input price; note: a cached input rate of 7.50 exists.
+      input: 15.00 # Standard input price; note: a cached input rate of 7.50 exists.
       output: 60.00
 
   - name: "gpt-4.5-2025-02-21-alpha"
     model_name: "gpt-4.5-2025-02-21-alpha"
     provider: "openai"
-    max_completion_tokens: 4024  # Longer response limit
+    max_completion_tokens: 4024 # Longer response limit
     pricing:
       date: "2025-02-23"
-      input: 75.00  # Standard input price; note: a cached input rate of 7.50 exists.
+      input: 75.00 # Standard input price; note: a cached input rate of 7.50 exists.
       output: 150.00
+
+  - name: "qwen-qwq-32b"
+    model_name: "qwen-qwq-32b"
+    provider: "groq"
+    max_completion_tokens: 128000
+    pricing:
+      date: "2025-03-09"
+      input: 0.29
+      output: 0.39
+    kwargs:
+      stream: true
+      stream_options:
+        include_usage: true
+
+  # https://console.groq.com/docs/model/deepseek-r1-distill-llama-70b-specdec
+  - name: "deepseek-r1-distill-llama-70b-specdec"
+    model_name: "deepseek-r1-distill-llama-70b-specdec"
+    provider: "groq"
+    max_completion_tokens: 16384
+    top_p: 0.95
+    temperature: 0.3
+    pricing:
+      date: "2025-03-09"
+      input: 0.75
+      output: 0.99
+    kwargs:
+      stream: true
+      stream_options:
+        include_usage: true
+
+  - name: "deepseek-r1-distill-llama-70b"
+    model_name: "deepseek-r1-distill-llama-70b"
+    provider: "groq"
+    max_completion_tokens: 16384
+    temperature: 0.7
+    pricing:
+      date: "2025-03-09"
+      input: 0.75
+      output: 0.99
+    # kwargs:
+    #   stream: true
+    #   stream_options:
+    #     include_usage: true
 
   - name: "o3_mini"
     model_name: "o3-mini"
@@ -53,7 +98,7 @@ models:
     max_completion_tokens: 4024
     pricing:
       date: "2025-02-23"
-      input: 1.10   # Standard input price; note: a cached input rate of 0.55 exists.
+      input: 1.10 # Standard input price; note: a cached input rate of 0.55 exists.
       output: 4.40
 
   - name: "o1_mini"
@@ -62,7 +107,7 @@ models:
     max_completion_tokens: 4024
     pricing:
       date: "2025-02-23"
-      input: 1.10   # Standard input price; note: a cached input rate of 0.55 exists.
+      input: 1.10 # Standard input price; note: a cached input rate of 0.55 exists.
       output: 4.40
 
   - name: "QwQ-32B"
@@ -71,7 +116,7 @@ models:
     max_tokens: 32768 # From HF example
     pricing:
       date: "2025-03-05"
-      input: 0.90   # Off Fireworks pricing page 3/5/2024
+      input: 0.90 # Off Fireworks pricing page 3/5/2024
       output: 0.90
 
   - name: "QwQ-32B-Fireworks"
@@ -80,7 +125,7 @@ models:
     max_tokens: 32768 # From HF example
     pricing:
       date: "2025-03-05"
-      input: 0.90   # Off Fireworks pricing page 3/5/2024
+      input: 0.90 # Off Fireworks pricing page 3/5/2024
       output: 0.90
 
   - name: "claude-3-5-sonnet-20241022"
@@ -90,7 +135,7 @@ models:
     temperature: 0.0
     pricing:
       date: "2025-02-23"
-      input: 3.00   # Single input price per 1M tokens.
+      input: 3.00 # Single input price per 1M tokens.
       output: 15.00 # Single output price per 1M tokens.
 
   - name: "claude_haiku"
@@ -100,8 +145,8 @@ models:
     temperature: 0.0
     pricing:
       date: "2025-02-23"
-      input: 0.80   # Single input price per 1M tokens.
-      output: 4.00  # Single output price per 1M tokens.
+      input: 0.80 # Single input price per 1M tokens.
+      output: 4.00 # Single output price per 1M tokens.
 
   - name: "claude_opus"
     model_name: "claude-3-opus-latest"
@@ -110,7 +155,7 @@ models:
     temperature: 0.0
     pricing:
       date: "2025-02-23"
-      input: 15.00  # Single input price per 1M tokens.
+      input: 15.00 # Single input price per 1M tokens.
       output: 75.00 # Single output price per 1M tokens.
 
   - name: "deepseek_chat"
@@ -120,8 +165,8 @@ models:
     temperature: 0.0
     pricing:
       date: "2025-02-23"
-      input: 0.07   # Cache-hit input price per 1M tokens; note: cache-miss price is 0.27.
-      output: 1.10  # Output price per 1M tokens.
+      input: 0.07 # Cache-hit input price per 1M tokens; note: cache-miss price is 0.27.
+      output: 1.10 # Output price per 1M tokens.
 
   - name: "deepseek_reasoner"
     model_name: "deepseek-reasoner"
@@ -130,8 +175,8 @@ models:
     temperature: 0.0
     pricing:
       date: "2025-02-23"
-      input: 0.14   # Cache-hit input price per 1M tokens; note: cache-miss price is 0.55.
-      output: 2.19  # Output price per 1M tokens.
+      input: 0.14 # Cache-hit input price per 1M tokens; note: cache-miss price is 0.55.
+      output: 2.19 # Output price per 1M tokens.
 
   - name: "gemini_pro"
     model_name: "gemini-1.5-pro"
@@ -140,8 +185,8 @@ models:
     temperature: 0.0
     pricing:
       date: "2025-02-23"
-      input: 1.25   # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 2.50.
-      output: 5.00   # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 10.00.
+      input: 1.25 # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 2.50.
+      output: 5.00 # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 10.00.
 
   - name: "gemini_short_response"
     model_name: "gemini-1.5-pro"
@@ -150,8 +195,8 @@ models:
     temperature: 0.0
     pricing:
       date: "2025-02-23"
-      input: 1.25   # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 2.50.
-      output: 5.00   # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 10.00.
+      input: 1.25 # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 2.50.
+      output: 5.00 # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 10.00.
 
   - name: "gemini_flash_8b"
     model_name: "gemini-1.5-flash-8b"
@@ -160,8 +205,8 @@ models:
     temperature: 0.0
     pricing:
       date: "2025-02-23"
-      input: 0.0375   # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 0.075.
-      output: 0.15    # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 0.30.
+      input: 0.0375 # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 0.075.
+      output: 0.15 # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 0.30.
 
   - name: "gemini_flash"
     model_name: "gemini-1.5-flash"
@@ -170,8 +215,8 @@ models:
     temperature: 0.0
     pricing:
       date: "2025-02-23"
-      input: 0.075   # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 0.15.
-      output: 0.30    # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 0.60.
+      input: 0.075 # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 0.15.
+      output: 0.30 # For prompts ≤128k tokens (normalized); prompts >128k tokens are priced at 0.60.
 
   - name: "gemini_flash_lite"
     model_name: "gemini-2.0-flash-lite"
@@ -180,8 +225,8 @@ models:
     temperature: 0.0
     pricing:
       date: "2025-02-23"
-      input: 0.075   # Single input rate per 1M tokens.
-      output: 0.30   # Single output rate per 1M tokens.
+      input: 0.075 # Single input rate per 1M tokens.
+      output: 0.30 # Single output rate per 1M tokens.
 
   - name: "gemini_flash_2"
     model_name: "gemini-2.0-flash"
@@ -190,5 +235,5 @@ models:
     temperature: 0.0
     pricing:
       date: "2025-02-23"
-      input: 0.10   # Normalized to text/image/video rate; audio prompts are priced at 0.70.
-      output: 0.40  # Single output rate per 1M tokens.
+      input: 0.10 # Normalized to text/image/video rate; audio prompts are priced at 0.70.
+      output: 0.40 # Single output rate per 1M tokens.

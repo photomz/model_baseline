@@ -168,3 +168,6 @@ plan.md
 .python-version
 .vscode/
 plan*.md
+
+results/
+submissions/

@@ -1,0 +1,21 @@
+Find the common visual pattern in the 2D grid examples to solve the test puzzle.
+
+# Rules
+- Each color is represented by a unique single digit.
+- Before finishing thinking, always re-check your hypothesized pattern against each example input/output to confirm it is correct.
+- Before finishing thinking, always be your devil's advocate and think of counterfactuals to your hypothesis, it is likely wrong. Think "wait, let me check examples 1 or 2 or ..."
+- Answer in the example format.
+
+# Hints
+- The puzzle-like inputs and outputs present a grid where each square can be one of ten colors.
+- The puzzle involves visual pattern recognition and abstract reasoning ONLY. Think in 
+- Big hint: the pattern is very simple, a human child can solve it. 
+- However, it may compose many simple visual patterns together, or add distracting noise to obscure the pattern.
+- The number are colors. Never think in terms of arithmetic operations on the numbers, like integers. The color group forbids   these operations.
+- Big hint: Do not think in terms of operations on rows only. The grid is a 2D image, think in 2D, and in columns too.
+
+# Examples
+{training_examples}
+
+# Test
+{test_input}

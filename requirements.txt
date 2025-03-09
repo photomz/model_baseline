@@ -27,3 +27,4 @@ urllib3==2.2.3
 openai==1.58.1
 click>=8.0.0
 grpcio==1.60.1
+groq==0.18.0
